@@ -168,7 +168,7 @@ export default function StrategyPage() {
   const [viewBy,  setViewBy]  = useState("Entity");
 
   return (
-    <div className="p-5 space-y-6 bg-gray-50 min-h-full">
+    <div className="p-5 space-y-6 bg-white min-h-full">
 
       {/* ════════════════════════════════
           SECTION 1 — Strategies & Execution Overview
@@ -276,6 +276,9 @@ export default function StrategyPage() {
                   <Pie data={focusAreas.map(f=>({value:parseInt(f.pct)}))} cx="50%" cy="50%" innerRadius={20} outerRadius={30} dataKey="value" strokeWidth={0}>
                     {focusAreas.map((fa, i) => <Cell key={i} fill={fa.color} />)}
                   </Pie>
+                  <Tooltip 
+                    contentStyle={{ borderRadius: 8, border: "1px solid #e5e7eb", fontSize: 10 }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -405,6 +408,9 @@ export default function StrategyPage() {
                   <Pie data={keyResultsDonut} cx="50%" cy="50%" innerRadius={42} outerRadius={60} dataKey="value" strokeWidth={2} stroke="#fff" startAngle={90} endAngle={-270}>
                     {keyResultsDonut.map((e, i) => <Cell key={i} fill={e.color} />)}
                   </Pie>
+                  <Tooltip 
+                    contentStyle={{ borderRadius: 8, border: "1px solid #e5e7eb", fontSize: 11 }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
@@ -441,6 +447,10 @@ export default function StrategyPage() {
                   <Pie data={resourceDonut} cx="50%" cy="50%" innerRadius={42} outerRadius={60} dataKey="value" strokeWidth={2} stroke="#fff" startAngle={90} endAngle={-270}>
                     {resourceDonut.map((e, i) => <Cell key={i} fill={e.color} />)}
                   </Pie>
+                  <Tooltip 
+                    contentStyle={{ borderRadius: 8, border: "1px solid #e5e7eb", fontSize: 11 }}
+                    formatter={(v: any) => [`₹${v} Cr`]}
+                  />
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">

@@ -133,7 +133,7 @@ const scoreColor = (v: number) => v >= 80 ? "#22c55e" : v >= 65 ? "#f59e0b" : "#
 /* ═══════════════════ MAIN COMPONENT ═══════════════════ */
 export default function ControlPage() {
   return (
-    <div className="p-5 space-y-6 bg-gray-50 min-h-full">
+    <div className="p-5 space-y-6 bg-white min-h-full">
 
       {/* ════════════════════════════════
           SECTION 1 — Control & Capacity
@@ -444,6 +444,10 @@ export default function ControlPage() {
                   <Pie data={liquidityDonut} cx="50%" cy="50%" innerRadius={44} outerRadius={64} dataKey="value" strokeWidth={2} stroke="#fff" startAngle={90} endAngle={-270}>
                     {liquidityDonut.map((e, i) => <Cell key={i} fill={e.color} />)}
                   </Pie>
+                  <Tooltip 
+                    contentStyle={{ borderRadius: 8, border: "1px solid #e5e7eb", fontSize: 11 }}
+                    formatter={(v: any) => [`₹${v} Cr`]}
+                  />
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">

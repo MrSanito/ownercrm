@@ -15,12 +15,12 @@ interface SidebarLayoutProps {
 }
 
 const navItems = [
-  { id: "dashboard",          label: "Dashboard",                  icon: LayoutDashboard },
-  { id: "strategies",         label: "Strategy & Execution",       icon: Target          },
-  { id: "control-capacity",   label: "Control & Capacity",         icon: Sliders         },
-  { id: "market-signals",     label: "Market Signals",             icon: Activity        },
-  { id: "reports",            label: "Reports",                    icon: FileText        },
-  { id: "alerts",             label: "Alerts",                     icon: Bell            },
+  { id: "dashboard",          label: "Dashboard",                  icon: LayoutDashboard, initial: "DB" },
+  { id: "strategies",         label: "Strategy & Execution",       icon: Target,          initial: "SE" },
+  { id: "control-capacity",   label: "Control & Capacity",         icon: Sliders,         initial: "CC" },
+  { id: "market-signals",     label: "Market Signals",             icon: Activity,        initial: "MS" },
+  { id: "reports",            label: "Reports",                    icon: FileText,        initial: "RT" },
+  { id: "alerts",             label: "Alerts",                     icon: Bell,            initial: "AL" },
 ];
 
 const entities = [
@@ -38,8 +38,8 @@ export default function SidebarLayout({ children, currentPage, onNavigate }: Sid
 
   return (
     <div
-      className="flex h-screen overflow-hidden"
-      style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif", backgroundColor: "#f8fafc" }}
+      className="flex h-screen overflow-hidden font-sans"
+      style={{ backgroundColor: "#f8fafc" }}
     >
       {/* ═══════════════════════════════════════
           SIDEBAR — matches Image 2
@@ -54,7 +54,7 @@ export default function SidebarLayout({ children, currentPage, onNavigate }: Sid
             className="flex items-start gap-2 rounded-xl p-3 cursor-text"
             style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
           >
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-lg">
               <span className="text-white text-[10px] font-black">Ai</span>
             </div>
             <div className="flex-1 min-w-0">
@@ -73,7 +73,7 @@ export default function SidebarLayout({ children, currentPage, onNavigate }: Sid
 
         {/* OVERVIEW section */}
         <div className="px-3 pt-3 pb-1">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-gray-600 px-2 mb-1">Overview</p>
+          <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 px-2 mb-1 opacity-50">Overview</p>
         </div>
 
         {/* Nav items */}
@@ -87,16 +87,19 @@ export default function SidebarLayout({ children, currentPage, onNavigate }: Sid
                 onClick={() => onNavigate(item.id)}
                 className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left transition-all group"
                 style={{
-                  backgroundColor: isActive ? "rgba(96,165,250,0.15)" : "transparent",
-                  color: isActive ? "#60a5fa" : "#64748b",
+                  backgroundColor: isActive ? "rgba(96,165,250,0.12)" : "transparent",
+                  color: isActive ? "#60a5fa" : "#94a3b8",
                 }}
-                onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.04)"; }}
-                onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
               >
-                <Icon size={14} className="flex-shrink-0" />
+                <div 
+                  className={`w-6 h-6 rounded flex items-center justify-center text-[9px] font-bold transition-all ${isActive ? 'bg-blue-500/20 text-blue-400' : 'bg-white/5 text-gray-500 group-hover:bg-white/10'}`}
+                  style={{ minWidth: 24 }}
+                >
+                  {item.initial}
+                </div>
                 <span className="text-[12px] font-medium truncate">{item.label}</span>
                 {item.id === "alerts" && (
-                  <span className="ml-auto bg-red-500 text-white text-[8px] font-bold rounded-full w-4 h-4 flex items-center justify-center">8</span>
+                  <span className="ml-auto bg-red-500 text-white text-[8px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-lg">8</span>
                 )}
               </button>
             );
@@ -207,7 +210,7 @@ export default function SidebarLayout({ children, currentPage, onNavigate }: Sid
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto" style={{ backgroundColor: "#f8fafc" }}>
+        <main className="flex-1 overflow-y-auto" style={{ backgroundColor: "#ffffff" }}>
           {children}
         </main>
       </div>

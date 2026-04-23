@@ -156,7 +156,7 @@ export default function GroupDashboard() {
   const [signalTab, setSignalTab] = useState("All");
 
   return (
-    <div className="p-4 space-y-4 min-h-full" style={{ color: "#334155" }}>
+    <div className="p-5 space-y-6 bg-white min-h-full text-gray-900">
 
       {/* ── Row 1: Group Overview + KPIs ── */}
       <div className="grid grid-cols-12 gap-3">

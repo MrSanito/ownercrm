@@ -5,6 +5,8 @@ import SidebarLayout from "./SidebarLayout";
 import Dashboard from "./Dashboard";
 import ControlPage from "./control";
 import StrategyPage from "./strategy";
+import Market from "./Market";
+import Reports from "./Report";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("dashboard");
@@ -17,6 +19,10 @@ export default function Home() {
         return <StrategyPage />;
       case "control-capacity":
         return <ControlPage />;
+      case "market-signals":
+        return <Market />;
+      case "reports":
+        return <Reports />;
       default:
         return (
           <div className="flex items-center justify-center h-full">
