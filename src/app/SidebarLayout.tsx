@@ -35,7 +35,7 @@ const entities = [
 export default function SidebarLayout({ children, currentPage, onNavigate }: SidebarLayoutProps) {
   const [aiSearch, setAiSearch] = useState("");
   const [activeEntity, setActiveEntity] = useState("autox");
-
+         
   return (
     <div
       className="flex h-screen overflow-hidden font-sans"
