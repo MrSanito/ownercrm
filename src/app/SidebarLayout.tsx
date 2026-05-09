@@ -12,7 +12,8 @@ interface SidebarLayoutProps {
   children: React.ReactNode;
   currentPage: string;
   onNavigate: (page: string) => void;
-}
+}          
+const real = "start"
 
 const navItems = [
   { id: "dashboard",          label: "Dashboard",                  icon: LayoutDashboard, initial: "DB" },
